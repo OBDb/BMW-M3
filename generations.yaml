@@ -1,0 +1,30 @@
+generations:
+  - name: "First Generation (E30)"
+    start_year: 1986
+    end_year: 1991
+    description: "The original M3 was developed as a homologation special for Group A touring car racing. Available as a two-door coupe and later as a convertible, it featured a high-revving 2.3L four-cylinder engine (later 2.5L) producing 192-235 HP depending on the version. Distinguished by its box-flared fenders, rear wing, and unique front and rear fascias, the E30 M3 was a purpose-built performance car with extensive modifications from the standard 3 Series. Its motorsport success and driving purity have made it a highly coveted collector car."
+
+  - name: "Second Generation (E36)"
+    start_year: 1992
+    end_year: 1999
+    description: "The E36 M3 represented a shift towards a more refined high-performance car, available as a coupe, sedan, and convertible. Powered by a 3.0L straight-six engine (later 3.2L) producing 282-321 HP, it offered enhanced performance with greater comfort than its predecessor. European models received a more powerful engine compared to North American versions. The E36 M3 established the template for M cars combining everyday usability with exceptional performance."
+
+  - name: "Third Generation (E46)"
+    start_year: 2000
+    end_year: 2006
+    description: "Widely regarded as one of the finest M cars, the E46 M3 was powered by a 3.2L S54 straight-six engine producing 333 HP, available with a six-speed manual or SMG automated manual transmission. Offered in coupe and convertible body styles, it featured distinctive wider fenders, hood bulge, and aerodynamic enhancements. The limited-production CSL variant reduced weight through carbon fiber components and offered increased power. The E46 M3 is celebrated for its balanced handling, engaging powertrain, and timeless design."
+
+  - name: "Fourth Generation (E90/E92/E93)"
+    start_year: 2007
+    end_year: 2013
+    description: "The E9x M3 marked a significant change with the introduction of a high-revving 4.0L V8 engine producing 414 HP. Available as a sedan (E90), coupe (E92), and convertible (E93), it featured carbon fiber roof options, unique body panels, and sophisticated electronics including an adjustable differential. Special editions included the lightweight GTS, Competition Package, and Lime Rock Park Edition. This generation combined increased performance with greater refinement and technology."
+
+  - name: "Fifth Generation (F80)"
+    start_year: 2014
+    end_year: 2018
+    description: "The F80 M3 returned to a straight-six engine, now twin-turbocharged for the first time, producing 425-450 HP depending on the version. Available only as a sedan (the coupe became the M4), it featured increased use of lightweight materials including a carbon fiber driveshaft and optional carbon ceramic brakes. The Competition Package added power and handling enhancements, while the limited-production CS variant offered further weight reduction and track-focused upgrades. The F80 represented the transition to turbocharged engines for M cars, delivering massive torque increases over its predecessors."
+
+  - name: "Sixth Generation (G80)"
+    start_year: 2021
+    end_year: null
+    description: "The current M3 features controversial styling with a large vertical kidney grille but continues to offer exemplary performance. Powered by a 3.0L twin-turbocharged S58 straight-six engine producing 473 HP in standard form and 503 HP in Competition trim, it's available as a sedan and for the first time as a wagon in some markets. The standard M3 offers a six-speed manual, while the Competition models feature an eight-speed automatic. All-wheel drive (xDrive) is available on Competition models, a first for the M3. The interior features M-specific displays, sports seats, and carbon fiber trim options. Throughout its evolution, the M3 has remained BMW's definitive performance car, combining track capability with daily usability."
