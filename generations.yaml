@@ -1,3 +1,6 @@
+references:
+  - "https://en.wikipedia.org/wiki/BMW_M3"
+
 generations:
   - name: "First Generation (E30)"
     start_year: 1986
@@ -24,7 +27,7 @@ generations:
     end_year: 2018
     description: "The F80 M3 returned to a straight-six engine, now twin-turbocharged for the first time, producing 425-450 HP depending on the version. Available only as a sedan (the coupe became the M4), it featured increased use of lightweight materials including a carbon fiber driveshaft and optional carbon ceramic brakes. The Competition Package added power and handling enhancements, while the limited-production CS variant offered further weight reduction and track-focused upgrades. The F80 represented the transition to turbocharged engines for M cars, delivering massive torque increases over its predecessors."
 
-  - name: "Sixth Generation (G80)"
-    start_year: 2021
+  - name: "Sixth Generation (G80/G81)"
+    start_year: 2020
     end_year: null
-    description: "The current M3 features controversial styling with a large vertical kidney grille but continues to offer exemplary performance. Powered by a 3.0L twin-turbocharged S58 straight-six engine producing 473 HP in standard form and 503 HP in Competition trim, it's available as a sedan and for the first time as a wagon in some markets. The standard M3 offers a six-speed manual, while the Competition models feature an eight-speed automatic. All-wheel drive (xDrive) is available on Competition models, a first for the M3. The interior features M-specific displays, sports seats, and carbon fiber trim options. Throughout its evolution, the M3 has remained BMW's definitive performance car, combining track capability with daily usability."
+    description: "The current M3 features controversial styling with a large vertical kidney grille but continues to offer exemplary performance. Powered by a 3.0L twin-turbocharged S58 straight-six engine producing 473 HP in standard form and 503 HP in Competition trim, it's available as a sedan (G80) and for the first time as an estate wagon (G81). The standard M3 offers a six-speed manual, while the Competition models feature an eight-speed automatic. All-wheel drive (xDrive) is available on Competition models, a first for the M3. The interior features M-specific displays, sports seats, and carbon fiber trim options. Throughout its evolution, the M3 has remained BMW's definitive performance car, combining track capability with daily usability."
