@@ -1,4 +1,465 @@
 { "commands": [
-
+{ "hdr": "6F1", "rax": "60D", "eax": "0D", "fcm1": true, "cmd": {"22": "D240"}, "freq": 0.25, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_VSS_INSTR", "path": "Movement", "fmt": { "len": 16, "max": 1000, "unit": "kilometersPerHour" }, "name": "Vehicle speed, instrument cluster", "suggestedMetric": "speed", "description": "Instrument cluster vehicle speed."}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "400B"}, "freq": 1, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_LAMBDA", "path": "Engine", "fmt": {"bix": 40, "len": 8, "max": 2, "div": 100, "unit": "scalar" }, "name": "Lambda 1, excess air ratio"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4015"}, "freq": 1,
+  "signals": [
+    {"id": "M3_IAT", "path": "Engine", "fmt": {"bix": 8, "len": 8, "max": 150, "unit": "celsius" }, "name": "Intake air temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "402B"}, "freq": 10,
+  "signals": [
+    {"id": "M3_12V_T", "path": "Electrical", "fmt": {           "len": 16, "max": 3276.7,  "min": -3276.8, "div": 10,                "sign": true, "unit": "celsius" }, "name": "12V battery temperature"},
+    {"id": "M3_12V_V", "path": "Electrical", "fmt": {"bix": 16, "len": 16, "max": 22.3837, "min": 6,       "div": 4000, "add": 6,                  "unit": "volts"   }, "name": "12V battery voltage",     "suggestedMetric": "starterBatteryVoltage"},
+    {"id": "M3_12V_A", "path": "Electrical", "fmt": {"bix": 32, "len": 16, "max": 5042.8,  "min": -200,    "div": 12.5, "add": -200,               "unit": "amps"    }, "name": "12V battery current"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "40A9"}, "freq": 1,
+  "signals": [
+    {"id": "M3_BAT_CAP",          "path": "Battery", "fmt": {           "len": 8, "max": 255, "unit": "ampereHours" }, "name": "Battery capacity"},
+    {"id": "M3_ORIGINAL_BAT_CAP", "path": "Battery", "fmt": {"bix": 16, "len": 8, "max": 255, "unit": "ampereHours" }, "name": "Original battery capacity"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "40AD"}, "freq": 1,
+  "signals": [
+    {"id": "M3_BAT_ST_CHG_CURRENT",     "path": "Battery", "fmt": {            "len": 8,  "max": 255,   "unit": "percent" }, "name": "Battery state of charge current"},
+    {"id": "M3_BAT_ST_CHG_LAST_1",      "path": "Battery", "fmt": {"bix": 16,  "len": 8,  "max": 255,   "unit": "percent" }, "name": "Battery state of charge last-1"},
+    {"id": "M3_BAT_ST_CHG_LAST_2",      "path": "Battery", "fmt": {"bix": 32,  "len": 8,  "max": 255,   "unit": "percent" }, "name": "Battery state of charge last-2"},
+    {"id": "M3_BAT_ST_CHG_LAST_3",      "path": "Battery", "fmt": {"bix": 48,  "len": 8,  "max": 255,   "unit": "percent" }, "name": "Battery state of charge last-3"},
+    {"id": "M3_BAT_ST_CHG_LAST_4",      "path": "Battery", "fmt": {"bix": 64,  "len": 8,  "max": 255,   "unit": "percent" }, "name": "Battery state of charge last-4"},
+    {"id": "M3_BAT_ST_CHG_LAST_5",      "path": "Battery", "fmt": {"bix": 80,  "len": 8,  "max": 255,   "unit": "percent" }, "name": "Battery state of charge last-5"},
+    {"id": "M3_BAT_TIME_ST_CHG_0_40",   "path": "Battery", "fmt": {"bix": 96,  "len": 16, "max": 65535, "unit": "percent" }, "name": "Battery time in state of charge 0-40%"},
+    {"id": "M3_BAT_TIME_ST_CHG_40_60",  "path": "Battery", "fmt": {"bix": 112, "len": 16, "max": 65535, "unit": "percent" }, "name": "Battery time in state of charge 40-60%"},
+    {"id": "M3_BAT_TIME_ST_CHG_60_70",  "path": "Battery", "fmt": {"bix": 128, "len": 16, "max": 65535, "unit": "percent" }, "name": "Battery time in state of charge 60-70%"},
+    {"id": "M3_BAT_TIME_ST_CHG_70_80",  "path": "Battery", "fmt": {"bix": 144, "len": 16, "max": 65535, "unit": "percent" }, "name": "Battery time in state of charge 70-80%"},
+    {"id": "M3_BAT_TIME_ST_CHG_80_90",  "path": "Battery", "fmt": {"bix": 160, "len": 16, "max": 65535, "unit": "percent" }, "name": "Battery time in state of charge 80-90%"},
+    {"id": "M3_BAT_TIME_ST_CHG_90_100", "path": "Battery", "fmt": {"bix": 176, "len": 16, "max": 65535, "unit": "percent" }, "name": "Battery time in state of charge 90-100%"},
+    {"id": "M3_BAT_TIME_INVALID_ST",    "path": "Battery", "fmt": {"bix": 192, "len": 16, "max": 65535, "unit": "percent" }, "name": "Battery time in invalid state of charge"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "40CB"}, "freq": 5, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_ETHANOL_CAN", "path": "Fuel", "fmt": {"bix": 104, "len": 8, "max": 100, "div": 2, "unit": "percent" }, "name": "Ethanol content, CAN broadcast, live"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "411E"}, "freq": 1, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_COOLANT", "path": "Engine", "fmt": {"bix": 16, "len": 8, "max": 200, "unit": "celsius" }, "name": "Coolant temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4201"}, "freq": 5,
+  "signals": [
+    {"id": "M3_BARO", "path": "Engine", "fmt": { "len": 16, "max": 255.99, "div": 256, "unit": "kilopascal" }, "name": "Barometric pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4205"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_BOOST_P", "path": "Engine", "fmt": { "len": 16, "max": 511.99, "div": 128, "unit": "kilopascal" }, "name": "Boost pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "4300"}, "freq": 1, "filter": { "to": 2018 },
+  "signals": [
+    {"id": "M3_ET_8", "path": "Engine", "fmt": { "len": 8, "max": 143.25, "min": -48, "mul": 3, "div": 4, "add": -48, "unit": "celsius" }, "name": "Engine temperature", "suggestedMetric": "engineCoolantTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "4300"}, "freq": 1, "filter": { "from": 2019 }, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_ET", "path": "Engine", "fmt": { "len": 16, "max": 6280, "min": -273.15, "div": 10, "add": -273.15, "unit": "celsius" }, "name": "Engine temperature", "suggestedMetric": "engineCoolantTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "4402"}, "freq": 1, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_EOT_6F1", "path": "Engine", "fmt": {"bix": 8, "len": 8, "max": 127.5, "div": 2, "unit": "celsius" }, "name": "Engine oil temperature", "suggestedMetric": "engineOilTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4408"}, "freq": 5, "filter": { "to": 2018 },
+  "signals": [
+    {"id": "M3_EOT_DME", "path": "Engine", "fmt": { "len": 16, "max": 6553.5, "div": 10, "unit": "celsius" }, "name": "Engine oil temperature", "suggestedMetric": "engineOilTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4408"}, "freq": 5, "filter": { "from": 2019 },
+  "signals": [
+    {"id": "M3_EOT_DME_K", "path": "Engine", "fmt": { "len": 16, "max": 6280, "min": -273.15, "div": 10, "add": -273.15, "unit": "celsius" }, "name": "Engine oil temperature", "suggestedMetric": "engineOilTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "442C"}, "freq": 30,
+  "signals": [
+    {"id": "M3_OIL_LEVEL", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Oil level"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "4506"}, "freq": 1, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_OIL_TEMP_8", "path": "Engine", "fmt": { "len": 8, "max": 200, "unit": "celsius" }, "name": "Engine oil temperature", "suggestedMetric": "engineOilTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "480C"}, "freq": 1,
+  "signals": [
+    {"id": "M3_LOAD_TGT", "path": "Engine", "fmt": { "len": 16, "max": 1535, "mul": 3, "div": 128, "unit": "percent" }, "name": "Engine load, target"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4A2D"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_MAP", "path": "Engine", "fmt": { "len": 16, "max": 511.99, "div": 128, "unit": "kilopascal" }, "name": "Intake manifold pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4A2E"}, "freq": 3600,
+  "signals": [
+    {"id": "M3_REV_LIMIT", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "rpm" }, "name": "Rev limiter"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4A49"}, "freq": 1,
+  "signals": [
+    {"id": "M3_IGN_TIMING_1", "path": "Engine", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "degrees" }, "name": "Ignition timing, cylinder 1"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4A4A"}, "freq": 1,
+  "signals": [
+    {"id": "M3_IGN_TIMING_2", "path": "Engine", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "degrees" }, "name": "Ignition timing, cylinder 2"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4A4B"}, "freq": 1,
+  "signals": [
+    {"id": "M3_LOAD_2", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 20, "div": 51, "unit": "percent" }, "name": "Engine load 2"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4A4C"}, "freq": 1,
+  "signals": [
+    {"id": "M3_IGN_TIMING_3", "path": "Engine", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "degrees" }, "name": "Ignition timing, cylinder 3"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4A4D"}, "freq": 1,
+  "signals": [
+    {"id": "M3_IGN_TIMING_4", "path": "Engine", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "degrees" }, "name": "Ignition timing, cylinder 4"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "4AB0"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_BOOST_P_SET", "path": "Engine", "fmt": { "len": 16, "max": 255.99, "div": 256, "unit": "kilopascal" }, "name": "Boost pressure, set point"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "4AB1"}, "freq": 0.25, "dbgfilter": { "to": 2015, "years": [2017, 2018, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_VSS2", "path": "Movement", "fmt": { "len": 16, "max": 255, "div": 100, "unit": "kilometersPerHour" }, "name": "Vehicle speed", "suggestedMetric": "speed", "description": "High resolution vehicle speed."}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "4C5B"}, "freq": 1, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_EGT_CALC", "path": "Engine", "fmt": {"bix": 16, "len": 16, "max": 1200, "div": 10, "unit": "celsius" }, "name": "Exhaust gas calculated temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "558E"}, "freq": 60,
+  "signals": [
+    {"id": "M3_ODO_DME", "path": "Trips", "fmt": { "len": 32, "max": 4294967295, "unit": "kilometers" }, "name": "Odometer, engine computer"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "558F"}, "freq": 60,
+  "signals": [
+    {"id": "M3_ENG_HOURS", "path": "Trips", "fmt": { "len": 32, "max": 2147483647, "div": 2, "unit": "hours" }, "name": "Engine operating hours"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "56D7"}, "freq": 1,
+  "signals": [
+    {"id": "M3_FRP", "path": "Fuel", "fmt": { "len": 16, "max": 1310, "div": 50, "unit": "bars" }, "name": "Fuel rail pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "57C3"}, "freq": 1, "dbgfilter": { "to": 2022, "from": 2024 },
+  "signals": [
+    {"id": "M3_OIL_TEMP_ALT", "path": "Engine", "fmt": { "len": 16, "max": 200, "div": 10, "unit": "celsius" }, "name": "Engine oil temperature, alternate", "suggestedMetric": "engineOilTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "580F"}, "freq": 5,
+  "signals": [
+    {"id": "M3_IAT_DME", "path": "Engine", "fmt": { "len": 8, "max": 143.25, "min": -48, "mul": 0.75, "add": -48, "unit": "celsius" }, "name": "Intake air temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "5813"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_LOAD", "path": "Engine", "fmt": { "len": 8, "max": 191.25, "mul": 0.75, "unit": "percent" }, "name": "Engine load"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "582C"}, "freq": 1,
+  "signals": [
+    {"id": "M3_LAMBDA_2", "path": "Engine", "fmt": { "len": 16, "max": 15.99, "div": 4096, "nullmax": 15.99, "unit": "scalar" }, "name": "Lambda 2"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "582F"}, "freq": 5,
+  "signals": [
+    {"id": "M3_CAT_T", "path": "Engine", "fmt": { "len": 16, "max": 6280, "min": -273.15, "div": 10, "add": -273.15, "unit": "celsius" }, "name": "Catalyst temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "cmd": {"22": "586F"}, "freq": 1, "dbgfilter": { "to": 2015, "years": [2017, 2018, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_EOP", "path": "Engine", "fmt": { "len": 16, "max": 65.535, "div": 1000, "unit": "bars" }, "name": "Engine oil pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "5889"}, "freq": 1,
+  "signals": [
+    {"id": "M3_LAMBDA_6F1", "path": "Engine", "fmt": { "len": 16, "max": 16, "mul": 16, "div": 65535, "nullmax": 15.99, "unit": "scalar" }, "name": "Lambda"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "58BA"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_CRANK_TQ", "path": "Engine", "fmt": { "len": 16, "max": 6553, "div": 10, "unit": "newtonMeters" }, "name": "Crank torque"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "58F3"}, "freq": 1,
+  "signals": [
+    {"id": "M3_LOW_SIDE_FUEL_P", "path": "Fuel", "fmt": { "len": 16, "max": 65.53, "div": 1000, "unit": "bars" }, "name": "Low side fuel pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "59FA"}, "freq": 1,
+  "signals": [
+    {"id": "M3_IGN_ANGLE", "path": "Engine", "fmt": { "len": 8, "max": 95.25, "min": -96, "mul": 0.75, "sign": true, "unit": "degrees" }, "name": "Ignition angle"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "5AC3"}, "freq": 1,
+  "signals": [
+    {"id": "M3_FUEL_PRES", "path": "Fuel", "fmt": { "len": 16, "max": 170391, "mul": 2.6, "unit": "bars" }, "name": "Fuel pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "612", "eax": "12", "fcm1": true, "dbg": true, "cmd": {"22": "DE9C"}, "freq": 1,
+  "signals": [
+    {"id": "M3_APP", "path": "Engine", "fmt": {"bix": 32, "len": 16, "max": 4095, "div": 16, "unit": "percent" }, "name": "Accelerator pedal position"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "dbg": true, "cmd": {"21": "05"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_TURBINE_SPD", "path": "Movement", "fmt": { "len": 16, "max": 65535, "unit": "rpm" }, "name": "AT turbine speed"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "dbg": true, "cmd": {"21": "07"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_AVG_WHEELS_SPD", "path": "Tires", "fmt": { "len": 8, "max": 510, "mul": 2, "unit": "kilometersPerHour" }, "name": "Average wheel speed"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "dbg": true, "cmd": {"21": "08"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_ENG_TQ", "path": "Engine", "fmt": { "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "newtonMeters" }, "name": "AT engine torque"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "dbg": true, "cmd": {"21": "0A"}, "freq": 1,
+  "signals": [
+    {"id": "M3_ATF_T", "path": "Engine", "fmt": { "len": 8, "max": 200, "min": -55, "add": -55, "unit": "celsius" }, "name": "Automatic transmission fluid temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "dbg": true, "cmd": {"21": "0B"}, "freq": 1,
+  "signals": [
+    {"id": "M3_CLU_LOCK_UP", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Clutch lock-up speed"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "dbg": true, "cmd": {"22": "442F"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_ENG_TQ_6F1", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "newtonMeters" }, "name": "Engine torque"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "dbg": true, "cmd": {"22": "DA12"}, "freq": 30,
+  "signals": [
+    {"id": "M3_ATF_TEMP", "path": "Engine", "fmt": { "len": 16, "max": 65487, "min": -48, "add": -48, "nullmax": 65487, "unit": "celsius" }, "name": "Automatic transmission fluid temperature", "suggestedMetric": "transmissionFluidTemperature"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "cmd": {"22": "DA1F"}, "freq": 1, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_KICKDOWN", "path": "Engine", "fmt": {"bix": 8, "len": 8, "max": 100, "unit": "scalar" }, "name": "Kickdown"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "cmd": {"22": "DA22"}, "freq": 1, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_TQ_CNVRT_LOCKUP", "path": "Transmission", "name": "Torque converter lockup", "fmt": {"bix": 8, "len": 8, "map": {
+          "0": { "description": "Open",               "value": "OPEN" },
+          "1": { "description": "Controlled low",     "value": "CONTROL_LOW" },
+          "2": { "description": "Controlled high",    "value": "CONTROL_HIGH" },
+          "3": { "description": "Closed low",         "value": "CLOSED_LOW" },
+          "4": { "description": "Closed high",        "value": "CLOSED_HIGH" },
+          "8": { "description": "Transition to open", "value": "TRANSITION_OPEN" }
+        }}
+    }
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "cmd": {"22": "DA23"}, "freq": 15, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_ODO_LOWRES", "path": "Trips", "fmt": { "len": 32, "max": 1000000, "mul": 8, "unit": "kilometers" }, "name": "Odometer, low resolution", "suggestedMetric": "odometer"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "cmd": {"22": "DA25"}, "freq": 1, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_EOT", "path": "Engine", "fmt": { "len": 16, "max": 500, "min": -500, "add": -48, "sign": true, "unit": "celsius" }, "name": "Engine oil temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "cmd": {"22": "DA28"}, "freq": 1, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_BRAKE_SWITCH", "path": "Control", "fmt": {"bix": 8, "len": 8, "max": 1, "unit": "scalar" }, "name": "Brake switch"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "cmd": {"22": "DA2A"}, "freq": 1, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_TQ_CNVRT_RPM",    "path": "Transmission", "fmt": {           "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "rpm" }, "name": "Torque converter speed"},
+    {"id": "M3_TRANS_SHAFT_RPM", "path": "Transmission", "fmt": {"bix": 16, "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "rpm" }, "name": "Transmission output shaft speed"}
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "cmd": {"22": "DA2E"}, "freq": 1, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_GEAR_SHIFT", "path": "Transmission", "name": "Shift gear", "fmt": {"len": 8, "map": {
+          "0": { "description": "Park",    "value": "PARK" },
+          "1": { "description": "Reverse", "value": "REVERSE" },
+          "2": { "description": "Neutral", "value": "NEUTRAL" },
+          "3": { "description": "Drive",   "value": "DRIVE" }
+        }}
+    },
+    {"id": "M3_GEAR", "path": "Transmission", "name": "Drive mode", "fmt": {"bix": 8, "len": 8, "map": {
+          "3": { "description": "Drive", "value": "DRIVE" },
+          "5": { "description": "Sport", "value": "SPORT" }
+        }}
+    }
+  ]},
+{ "hdr": "6F1", "rax": "618", "eax": "18", "fcm1": true, "dbg": true, "cmd": {"22": "DA37"}, "freq": 30,
+  "signals": [
+    {"id": "M3_TIME_D", "path": "Engine", "fmt": {           "len": 8, "max": 255, "unit": "scalar" }, "name": "Time in d"},
+    {"id": "M3_TIME_S", "path": "Engine", "fmt": {"bix": 8,  "len": 8, "max": 255, "unit": "scalar" }, "name": "Time in s"},
+    {"id": "M3_TIME_M", "path": "Engine", "fmt": {"bix": 16, "len": 8, "max": 255, "unit": "scalar" }, "name": "Time in m"}
+  ]},
+{ "hdr": "6F1", "rax": "619", "eax": "19", "fcm1": true, "cmd": {"22": "DB32"}, "freq": 0.25, "dbgfilter": { "to": 2023, "from": 2025 },
+  "signals": [
+    {"id": "M3_AXLE_FRONT_ACTUAL_TORQUE",   "path": "Tires", "fmt": {           "len": 16, "max": 8000, "min": -8000, "div": 4, "sign": true, "unit": "newtonMeters" }, "name": "Front axle, actual torque"},
+    {"id": "M3_AXLE_FRONT_SETPOINT_TORQUE", "path": "Tires", "fmt": {"bix": 32, "len": 16, "max": 8000, "min": -8000, "div": 4, "sign": true, "unit": "newtonMeters" }, "name": "Front axle, set point torque"}
+  ]},
+{ "hdr": "6F1", "rax": "619", "eax": "19", "fcm1": true, "dbg": true, "cmd": {"22": "DFE7"}, "freq": 1,
+  "signals": [
+    {"id": "M3_VGT_CAL_ANGLE",   "path": "Engine", "fmt": {            "len": 16, "max": 1000,    "mul": 156.25, "div": 10000, "unit": "degrees"    }, "name": "Variable geometry turbocharger calibration angle"},
+    {"id": "M3_OIL_CHANGE_DIST", "path": "Fluids", "fmt": {"bix": 304, "len": 32, "max": 1000000,                              "unit": "kilometers" }, "name": "Distance since last oil change"}
+  ]},
+{ "hdr": "6F1", "rax": "61A", "eax": "1A", "fcm1": true, "dbg": true, "cmd": {"22": "DE8A"}, "freq": 1,
+  "signals": [
+    {"id": "M3_EM_I_W",      "path": "Engine", "fmt": {           "len": 16, "max": 2047, "min": -2048, "div": 16, "sign": true, "unit": "amps" }, "name": "Drive motor phase w current"},
+    {"id": "M3_EM_I_V",      "path": "Engine", "fmt": {"bix": 16, "len": 16, "max": 2047, "min": -2048, "div": 16, "sign": true, "unit": "amps" }, "name": "Drive motor phase v current"},
+    {"id": "M3_EM_I_U",      "path": "Engine", "fmt": {"bix": 32, "len": 16, "max": 2047, "min": -2048, "div": 16, "sign": true, "unit": "amps" }, "name": "Drive motor phase u current"},
+    {"id": "M3_EM_I_EXC",    "path": "Engine", "fmt": {"bix": 48, "len": 16, "max": 2047, "min": -2048, "div": 16, "sign": true, "unit": "amps" }, "name": "Drive motor excitation current"},
+    {"id": "M3_EM_INV_I_DC", "path": "Engine", "fmt": {"bix": 64, "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "amps" }, "name": "Drive inverter HV DC current"}
+  ]},
+{ "hdr": "6F1", "rax": "61A", "eax": "1A", "fcm1": true, "dbg": true, "cmd": {"22": "DEA6"}, "freq": 5,
+  "signals": [
+    {"id": "M3_EM_T_1", "path": "Engine", "fmt": {           "len": 16, "max": 511, "min": -511, "mul": 39, "div": 2500, "sign": true, "unit": "celsius" }, "name": "Drive motor temperature 1"},
+    {"id": "M3_EM_T_2", "path": "Engine", "fmt": {"bix": 16, "len": 16, "max": 511, "min": -511, "mul": 39, "div": 2500, "sign": true, "unit": "celsius" }, "name": "Drive motor temperature 2"}
+  ]},
+{ "hdr": "6F1", "rax": "61A", "eax": "1A", "fcm1": true, "dbg": true, "cmd": {"22": "DEA7"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_EM_RPM",    "path": "Engine", "fmt": {           "len": 16, "max": 27767, "min": -5000,  "div": 2, "add": -5000,               "unit": "rpm"          }, "name": "Drive motor speed"},
+    {"id": "M3_EM_TQ",     "path": "Engine", "fmt": {"bix": 16, "len": 16, "max": 16383, "min": -16384, "div": 2,               "sign": true, "unit": "newtonMeters" }, "name": "Drive motor torque, actual"},
+    {"id": "M3_EM_TQ_TGT", "path": "Engine", "fmt": {"bix": 32, "len": 16, "max": 16383, "min": -16384, "div": 2,               "sign": true, "unit": "newtonMeters" }, "name": "Drive motor torque, requested"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "dbg": true, "cmd": {"21": "01"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_FL_VSS_21", "path": "Tires", "fmt": {           "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Front left wheel speed, service 21"},
+    {"id": "M3_FR_VSS_21", "path": "Tires", "fmt": {"bix": 8,  "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Front right wheel speed, service 21"},
+    {"id": "M3_RL_VSS_21", "path": "Tires", "fmt": {"bix": 16, "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Rear left wheel speed, service 21"},
+    {"id": "M3_RR_VSS_21", "path": "Tires", "fmt": {"bix": 24, "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Rear right wheel speed, service 21"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "dbg": true, "cmd": {"21": "04"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_STEERING_WHEEL_ANGLE",      "path": "Tires",    "fmt": {           "len": 16, "max": 4095.875, "min": -4096,    "mul": 12.5, "div": 100, "sign": true, "unit": "degrees"                }, "name": "Steering wheel angle"},
+    {"id": "M3_LONGITUDINAL_ACCELERATION", "path": "Movement", "fmt": {"bix": 16, "len": 16, "max": 131.068,  "min": -131.072, "mul": 0.4,  "div": 100, "sign": true, "unit": "metersPerSecondSquared" }, "name": "Longitudinal acceleration"},
+    {"id": "M3_LATERAL_ACCELERATION",      "path": "Movement", "fmt": {"bix": 32, "len": 16, "max": 131.068,  "min": -131.072, "mul": 0.4,  "div": 100, "sign": true, "unit": "metersPerSecondSquared" }, "name": "Lateral acceleration"},
+    {"id": "M3_YAW_RATE",                  "path": "Engine",   "fmt": {"bix": 48, "len": 16, "max": 131.068,  "min": -131.072, "mul": 0.4,  "div": 100, "sign": true, "unit": "metersPerSecondSquared" }, "name": "Yaw rate"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "cmd": {"22": "DBE4"}, "freq": 0.25, "dbgfilter": { "to": 2014, "years": [2017, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_FL_SPD", "path": "Movement", "fmt": {           "len": 16, "max": 327.67, "min": -327.68, "div": 100, "sign": true, "unit": "kilometersPerHour" }, "name": "Front left wheel speed"},
+    {"id": "M3_FR_SPD", "path": "Movement", "fmt": {"bix": 16, "len": 16, "max": 327.67, "min": -327.68, "div": 100, "sign": true, "unit": "kilometersPerHour" }, "name": "Front right wheel speed"},
+    {"id": "M3_RL_SPD", "path": "Movement", "fmt": {"bix": 32, "len": 16, "max": 327.67, "min": -327.68, "div": 100, "sign": true, "unit": "kilometersPerHour" }, "name": "Rear left wheel speed"},
+    {"id": "M3_RR_SPD", "path": "Movement", "fmt": {"bix": 48, "len": 16, "max": 327.67, "min": -327.68, "div": 100, "sign": true, "unit": "kilometersPerHour" }, "name": "Rear right wheel speed"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "dbg": true, "cmd": {"22": "DBE5"}, "freq": 0.25,
+  "signals": [
+    {"id": "M3_BRAKE_P", "path": "Control", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "bars" }, "name": "Brake pressure"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "dbg": true, "cmd": {"22": "DC98"}, "freq": 15,
+  "signals": [
+    {"id": "M3_TPMS_POS_FL", "path": "Tires", "fmt": {"bix": 32,  "len": 8,  "max": 255,                                                                         "unit": "scalar"  },               "name": "Front left tire sensor position", "description": "0 front left, 1 front right, 2 rear left, 3 rear right"},
+    {"id": "M3_TP_FL",       "path": "Tires", "fmt": {"bix": 40,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                         "name": "Front left tire pressure",                                      "suggestedMetric": "frontLeftTirePressure"},
+    {"id": "M3_TT_FL",       "path": "Tires", "fmt": {"bix": 56,  "len": 8,  "max": 127,   "min": -128,                              "sign": true,               "unit": "celsius" },               "name": "Front left tire temperature",     "suggestedMetric": "frontLeftTireTemperature"},
+    {"id": "M3_TP_SET_FL",   "path": "Tires", "fmt": {"bix": 64,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                         "name": "Front left tire pressure, set point"},
+    {"id": "M3_TPMS_BAT_FL", "path": "Tires", "fmt": {"bix": 120, "len": 16, "blsb": true, "max": 65535,                                                                           "unit": "scalar" },                                         "name": "Front left tire sensor battery life, months"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "dbg": true, "cmd": {"22": "DC99"}, "freq": 15,
+  "signals": [
+    {"id": "M3_TPMS_POS_FR", "path": "Tires", "fmt": {"bix": 32,  "len": 8,  "max": 255,                                                                         "unit": "scalar"  },               "name": "Front right tire sensor position", "description": "0 front left, 1 front right, 2 rear left, 3 rear right"},
+    {"id": "M3_TP_FR",       "path": "Tires", "fmt": {"bix": 40,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                          "name": "Front right tire pressure",                                     "suggestedMetric": "frontRightTirePressure"},
+    {"id": "M3_TT_FR",       "path": "Tires", "fmt": {"bix": 56,  "len": 8,  "max": 127,   "min": -128,                              "sign": true,               "unit": "celsius" },               "name": "Front right tire temperature",     "suggestedMetric": "frontRightTireTemperature"},
+    {"id": "M3_TP_SET_FR",   "path": "Tires", "fmt": {"bix": 64,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                          "name": "Front right tire pressure, set point"},
+    {"id": "M3_TPMS_BAT_FR", "path": "Tires", "fmt": {"bix": 120, "len": 16, "blsb": true, "max": 65535,                                                                           "unit": "scalar" },                                          "name": "Front right tire sensor battery life, months"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "dbg": true, "cmd": {"22": "DC9A"}, "freq": 15,
+  "signals": [
+    {"id": "M3_TPMS_POS_RL", "path": "Tires", "fmt": {"bix": 32,  "len": 8,  "max": 255,                                                                         "unit": "scalar"  },               "name": "Rear left tire sensor position", "description": "0 front left, 1 front right, 2 rear left, 3 rear right"},
+    {"id": "M3_TP_RL",       "path": "Tires", "fmt": {"bix": 40,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                        "name": "Rear left tire pressure",                                       "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "M3_TT_RL",       "path": "Tires", "fmt": {"bix": 56,  "len": 8,  "max": 127,   "min": -128,                              "sign": true,               "unit": "celsius" },               "name": "Rear left tire temperature",     "suggestedMetric": "rearLeftTireTemperature"},
+    {"id": "M3_TP_SET_RL",   "path": "Tires", "fmt": {"bix": 64,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                        "name": "Rear left tire pressure, set point"},
+    {"id": "M3_TPMS_BAT_RL", "path": "Tires", "fmt": {"bix": 120, "len": 16, "blsb": true, "max": 65535,                                                                           "unit": "scalar" },                                        "name": "Rear left tire sensor battery life, months"}
+  ]},
+{ "hdr": "6F1", "rax": "629", "eax": "29", "fcm1": true, "dbg": true, "cmd": {"22": "DC9B"}, "freq": 15,
+  "signals": [
+    {"id": "M3_TPMS_POS_RR", "path": "Tires", "fmt": {"bix": 32,  "len": 8,  "max": 255,                                                                         "unit": "scalar"  },               "name": "Rear right tire sensor position", "description": "0 front left, 1 front right, 2 rear left, 3 rear right"},
+    {"id": "M3_TP_RR",       "path": "Tires", "fmt": {"bix": 40,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                         "name": "Rear right tire pressure",                                      "suggestedMetric": "rearRightTirePressure"},
+    {"id": "M3_TT_RR",       "path": "Tires", "fmt": {"bix": 56,  "len": 8,  "max": 127,   "min": -128,                              "sign": true,               "unit": "celsius" },               "name": "Rear right tire temperature",     "suggestedMetric": "rearRightTireTemperature"},
+    {"id": "M3_TP_SET_RR",   "path": "Tires", "fmt": {"bix": 64,  "len": 16, "blsb": true, "max": 32.76, "min": -32.76, "div": 1000,               "sign": true,                   "unit": "bars"   },                                         "name": "Rear right tire pressure, set point"},
+    {"id": "M3_TPMS_BAT_RR", "path": "Tires", "fmt": {"bix": 120, "len": 16, "blsb": true, "max": 65535,                                                                           "unit": "scalar" },                                         "name": "Rear right tire sensor battery life, months"}
+  ]},
+{ "hdr": "6F1", "rax": "630", "eax": "30", "fcm1": true, "dbg": true, "cmd": {"22": "DB99"}, "freq": 1,
+  "signals": [
+    {"id": "M3_STEER_TQ", "path": "Engine", "fmt": { "len": 16, "max": 255, "min": -256, "div": 128, "sign": true, "unit": "newtonMeters" }, "name": "Steering torque"}
+  ]},
+{ "hdr": "6F1", "rax": "640", "eax": "40", "fcm1": true, "cmd": {"22": "1700"}, "freq": 1, "dbgfilter": { "to": 2014, "years": [2017, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_ODO_2", "path": "Trips", "fmt": { "len": 32, "max": 1000000, "unit": "kilometers" }, "name": "Odometer variant", "suggestedMetric": "odometer"}
+  ]},
+{ "hdr": "6F1", "rax": "640", "eax": "40", "fcm1": true, "dbg": true, "cmd": {"22": "D130"}, "freq": 5,
+  "signals": [
+    {"id": "M3_PARK_BRAKE", "path": "Control", "fmt": { "len": 8, "max": 1, "unit": "offon" }, "name": "Parking brake applied"}
+  ]},
+{ "hdr": "6F1", "rax": "640", "eax": "40", "fcm1": true, "dbg": true, "cmd": {"22": "D906"}, "freq": 1,
+  "signals": [
+    {"id": "M3_AC_COMP_STAT", "path": "Engine", "fmt": {"bix": 8,  "len": 8, "max": 255, "unit": "scalar"  }, "name": "Air conditioning compressor status"},
+    {"id": "M3_AC_COMP_PWM",  "path": "Engine", "fmt": {"bix": 16, "len": 8, "max": 255, "unit": "percent" }, "name": "Air conditioning compressor PWM"}
+  ]},
+{ "hdr": "6F1", "rax": "656", "eax": "56", "fcm1": true, "cmd": {"22": "DCDD"}, "freq": 5, "dbgfilter": { "to": 2014, "years": [2017, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_DOOR_DRIVER",         "path": "Doors",   "fmt": {           "len": 8, "max": 255, "unit": "scalar" }, "name": "Driver door open"},
+    {"id": "M3_DOOR_PASSENGER",      "path": "Doors",   "fmt": {"bix": 8,  "len": 8, "max": 255, "unit": "scalar" }, "name": "Passenger door open"},
+    {"id": "M3_DOOR_DRIVER_REAR",    "path": "Doors",   "fmt": {"bix": 16, "len": 8, "max": 255, "unit": "scalar" }, "name": "Rear driver door open"},
+    {"id": "M3_DOOR_PASSENGER_REAR", "path": "Doors",   "fmt": {"bix": 24, "len": 8, "max": 255, "unit": "scalar" }, "name": "Rear passenger door open"},
+    {"id": "M3_HOOD",                "path": "Doors",   "fmt": {"bix": 32, "len": 8, "max": 255, "unit": "scalar" }, "name": "Hood open"},
+    {"id": "M3_TRUNK",               "path": "Doors",   "fmt": {"bix": 40, "len": 8, "max": 255, "unit": "scalar" }, "name": "Trunk open"},
+    {"id": "M3_REAR_WINDOW",         "path": "Windows", "fmt": {"bix": 48, "len": 8, "max": 255, "unit": "scalar" }, "name": "Rear window open"},
+    {"id": "M3_CENTRAL_LOCK",        "path": "Doors",   "fmt": {"bix": 56, "len": 8, "max": 255, "unit": "scalar" }, "name": "Locked",                   "description": "Overall lock state of the vehicle"}
+  ]},
+{ "hdr": "6F1", "rax": "660", "eax": "60", "fcm1": true, "dbg": true, "cmd": {"22": "420C"}, "freq": 5,
+  "signals": [
+    {"id": "M3_RANGE_ECO",  "path": "Trips", "fmt": {           "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Estimated range remaining in economy mode", "suggestedMetric": "electricRange"},
+    {"id": "M3_RANGE_COMF", "path": "Trips", "fmt": {"bix": 16, "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Estimated range remaining in comfort mode", "suggestedMetric": "electricRange"},
+    {"id": "M3_RANGE",      "path": "Trips", "fmt": {"bix": 32, "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Estimated range remaining",                 "suggestedMetric": "electricRange"}
+  ]},
+{ "hdr": "6F1", "rax": "660", "eax": "60", "fcm1": true, "cmd": {"22": "D107"}, "freq": 0.25, "dbgfilter": { "to": 2014, "years": [2017, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_VSS", "path": "Movement", "fmt": { "len": 16, "max": 255, "div": 10, "unit": "kilometersPerHour" }, "name": "Vehicle speed", "suggestedMetric": "speed", "description": "Speedometer vehicle speed."}
+  ]},
+{ "hdr": "6F1", "rax": "660", "eax": "60", "fcm1": true, "cmd": {"22": "D10D"}, "freq": 5, "dbgfilter": { "to": 2014, "years": [2017, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_ODO",     "path": "Trips", "fmt": {           "len": 32, "max": 4294967295, "unit": "kilometers" }, "name": "Odometer",              "suggestedMetric": "odometer"},
+    {"id": "M3_ODO_ALT", "path": "Trips", "fmt": {"bix": 32, "len": 32, "max": 4294967295, "unit": "kilometers" }, "name": "Odometer, alternative", "suggestedMetric": "odometer"}
+  ]},
+{ "hdr": "6F1", "rax": "660", "eax": "60", "fcm1": true, "dbg": true, "cmd": {"22": "D111"}, "freq": 5,
+  "signals": [
+    {"id": "M3_RANGE_E_CUR", "path": "Trips", "fmt": {           "len": 16, "max": 6553.5, "div": 10,                 "nullmax": 6553, "unit": "kilometers"    }, "name": "Current electric range",       "suggestedMetric": "electricRange",        "description": "Current estimated electric range"},
+    {"id": "M3_RANGE_E_MAX", "path": "Trips", "fmt": {"bix": 16, "len": 16, "max": 6553.5, "div": 10,                 "nullmax": 6553, "unit": "kilometers"    }, "name": "Maximum electric range"},
+    {"id": "M3_RANGE_F_CUR", "path": "Trips", "fmt": {"bix": 32, "len": 16, "max": 6553.5, "div": 10,                 "nullmax": 6553, "unit": "kilometers"    }, "name": "Current fuel range",           "suggestedMetric": "fuelRange",            "description": "Requires range extender."},
+    {"id": "M3_RANGE_F_MAX", "path": "Trips", "fmt": {"bix": 48, "len": 16, "max": 6553.5, "div": 10,   "nullmin": 0, "nullmax": 6553, "unit": "kilometers"    }, "name": "Maximum fuel range",           "description": "Requires range extender."},
+    {"id": "M3_RANGE_E_USE", "path": "Trips", "fmt": {"bix": 64, "len": 16, "max": 65.535, "div": 1000, "nullmin": 0, "nullmax": 65,   "unit": "kilowattHours" }, "name": "Electric consumption / 100km"},
+    {"id": "M3_AUX_PWR",     "path": "Trips", "fmt": {"bix": 80, "len": 16, "max": 655.35, "div": 100,                "nullmax": 655,  "unit": "kilowatts"     }, "name": "Auxiliary power consumption"}
+  ]},
+{ "hdr": "6F1", "rax": "660", "eax": "60", "fcm1": true, "cmd": {"22": "D112"}, "freq": 5, "dbgfilter": { "to": 2014, "years": [2017, 2019, 2020, 2021, 2022], "from": 2025 },
+  "signals": [
+    {"id": "M3_AAT", "path": "Climate", "fmt": { "len": 8, "max": 87.5, "min": -40, "div": 2, "add": -40, "unit": "celsius" }, "name": "Ambient air temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "660", "eax": "60", "fcm1": true, "dbg": true, "cmd": {"22": "D129"}, "freq": 30,
+  "signals": [
+    {"id": "M3_BC_AVG_CONS", "path": "Engine", "fmt": {           "len": 16, "max": 6553, "div": 10,  "unit": "kilowattHoursPer100Kilometers" }, "name": "Trip computer average consumption"},
+    {"id": "M3_BC_AVG_SPD",  "path": "Engine", "fmt": {"bix": 16, "len": 16, "max": 655,  "div": 100, "unit": "kilometersPerHour"             }, "name": "Trip computer average speed"},
+    {"id": "M3_BC_RANGE",    "path": "Engine", "fmt": {"bix": 48, "len": 16, "max": 6553, "div": 10,  "unit": "kilometers"                    }, "name": "Trip computer range"}
+  ]},
+{ "hdr": "6F1", "rax": "660", "eax": "60", "fcm1": true, "dbg": true, "cmd": {"22": "D12A"}, "freq": 1,
+  "signals": [
+    {"id": "M3_CONS_KWH_100KM", "path": "Engine", "fmt": { "len": 16, "max": 6553, "div": 10, "unit": "scalar" }, "name": "Consumption, kwh/100km"}
+  ]},
+{ "hdr": "6F1", "rax": "663", "eax": "63", "fcm1": true, "dbg": true, "cmd": {"22": "D030"}, "freq": 1,
+  "signals": [
+    {"id": "M3_NBT_WHL_SPD_1", "path": "Engine", "fmt": {           "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "kilometersPerHour" }, "name": "Wheel sensor speed 1"},
+    {"id": "M3_NBT_WHL_SPD_2", "path": "Engine", "fmt": {"bix": 16, "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "kilometersPerHour" }, "name": "Wheel sensor speed 2"},
+    {"id": "M3_NBT_WHL_SPD_3", "path": "Engine", "fmt": {"bix": 32, "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "kilometersPerHour" }, "name": "Wheel sensor speed 3"},
+    {"id": "M3_NBT_WHL_SPD_4", "path": "Engine", "fmt": {"bix": 48, "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "kilometersPerHour" }, "name": "Wheel sensor speed 4"},
+    {"id": "M3_GPS_SPD",       "path": "Engine", "fmt": {"bix": 80, "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "kilometersPerHour" }, "name": "Speed from satellite positioning"}
+  ]},
+{ "hdr": "6F1", "rax": "663", "eax": "63", "fcm1": true, "cmd": {"22": "D031"}, "freq": 1, "dbgfilter": { "to": 2015, "years": [2017], "from": 2019 },
+  "signals": [
+    {"id": "M3_GEAR_V2", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Current gear"}
+  ]},
+{ "hdr": "6F1", "rax": "678", "eax": "78", "fcm1": true, "dbg": true, "cmd": {"22": "D85C"}, "freq": 5,
+  "signals": [
+    {"id": "M3_CABIN_T", "path": "Engine", "fmt": { "len": 8, "max": 127, "min": -128, "sign": true, "unit": "celsius" }, "name": "Cabin temperature"}
+  ]},
+{ "hdr": "6F1", "rax": "678", "eax": "78", "fcm1": true, "dbg": true, "cmd": {"22": "D8C5"}, "freq": 10,
+  "signals": [
+    {"id": "M3_COMP_STATE", "path": "Climate", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "A/C compressor operating state"}
+  ]},
+{ "hdr": "6F1", "rax": "678", "eax": "78", "fcm1": true, "dbg": true, "cmd": {"22": "D91A"}, "freq": 10,
+  "signals": [
+    {"id": "M3_AIR_DIST_L", "path": "Climate", "fmt": {          "len": 8, "max": 255, "unit": "scalar" }, "name": "Front air distribution, left"},
+    {"id": "M3_AIR_DIST_R", "path": "Climate", "fmt": {"bix": 8, "len": 8, "max": 255, "unit": "scalar" }, "name": "Front air distribution, right"}
+  ]},
+{ "hdr": "6F1", "rax": "678", "eax": "78", "fcm1": true, "dbg": true, "cmd": {"22": "D92C"}, "freq": 5,
+  "signals": [
+    {"id": "M3_HVAC_OFF", "path": "Engine", "fmt": { "len": 8, "max": 1, "unit": "offon" }, "name": "Climate control off"}
+  ]},
+{ "hdr": "6F1", "rax": "678", "eax": "78", "fcm1": true, "dbg": true, "cmd": {"22": "D930"}, "freq": 5,
+  "signals": [
+    {"id": "M3_HVAC_AUC", "path": "Engine", "fmt": { "len": 8, "max": 1, "unit": "offon" }, "name": "Automatic air recirculation"}
+  ]},
+{ "hdr": "6F1", "rax": "678", "eax": "78", "fcm1": true, "dbg": true, "cmd": {"22": "D931"}, "freq": 5,
+  "signals": [
+    {"id": "M3_HVAC_RECIRC", "path": "Engine", "fmt": { "len": 8, "max": 1, "unit": "offon" }, "name": "Recirculation"}
+  ]},
+{ "hdr": "6F1", "rax": "678", "eax": "78", "fcm1": true, "dbg": true, "cmd": {"22": "D96B"}, "freq": 5,
+  "signals": [
+    {"id": "M3_IHX_AAT", "path": "Engine", "fmt": { "len": 16, "max": 16343, "min": -16424, "div": 2, "add": -40, "sign": true, "unit": "celsius" }, "name": "Outside temperature, climate control"}
+  ]}
 ]
 }
