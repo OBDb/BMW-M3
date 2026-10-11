@@ -1,0 +1,11 @@
+command_id: 6F1.612.2257C3|e=12,fc=1
+test_cases:
+- expected_values:
+    M3_OIL_TEMP_ALT: 72.2
+  response: 612F1056257C302D2
+- expected_values:
+    M3_OIL_TEMP_ALT: 127.3
+  response: 612F1056257C304F9
+- expected_values:
+    M3_OIL_TEMP_ALT: 128
+  response: 612F1056257C30500

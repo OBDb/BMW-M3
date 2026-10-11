@@ -1,0 +1,14 @@
+command_id: 6F1.612.224506|e=12,fc=1
+test_cases:
+- expected_values:
+    M3_OIL_TEMP_8: 4
+  response: 612F1056245060411
+- expected_values:
+    M3_OIL_TEMP_8: 69
+  response: 612F1056245064506
+- expected_values:
+    M3_OIL_TEMP_8: 77
+  response: 612F1056245064DFA
+- expected_values:
+    M3_OIL_TEMP_8: 112
+  response: 612F1056245067008
